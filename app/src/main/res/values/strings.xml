@@ -43,4 +43,6 @@
     <string name="file_32megabytes">Arquivo de 32 MB</string>
     <string name="file_64megabytes">Arquivo de 64 MB</string>
 
+    <string name="choose_image_file_size">Escolha o tamanho da imagem:</string>
+
 </resources>

@@ -231,7 +231,7 @@ public class IOActivity extends AppCompatActivity {
         double minTime = Double.MAX_VALUE;
         double maxTime = Double.MIN_VALUE;
         double totalTime = 0;
-        double totalServiceTime = 0;
+        //double totalServiceTime = 0;
 
         for(int i = 0; i < NUMBER_OF_TESTS; i++) {
 
@@ -272,7 +272,7 @@ public class IOActivity extends AppCompatActivity {
         double minTime = Double.MAX_VALUE;
         double maxTime = Double.MIN_VALUE;
         double totalTime = 0;
-        double totalServiceTime = 0;
+        //double totalServiceTime = 0;
         //double totalOperations = 0;
 
 
