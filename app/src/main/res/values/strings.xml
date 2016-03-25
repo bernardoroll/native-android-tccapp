@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">TccApp</string>
+    <string name="welcome">Seja bem-vindo! Favor selecionar a parte da aplicação que deseja
+    testar.</string>
+    <string name="error">Erro</string>
+
+    <string name="multiply_matrixes">Multiplicação de matrizes</string>
+    <string name="io_test">Teste de I/O</string>
+    <string name="interface_test">Teste de interface</string>
+
+    <string name="calculate">Calcular</string>
+    <string name="matrix_size_hint">Tamanho da matriz. (ex: digite 100 para matrix 100x100)</string>
+    <string name="service_mean_time"><![CDATA[<font color="red">Tempo médio de serviço (tempo médio
+    para a execução de cada operação):</font>]]> %1$f segundos.
+    </string>
+    <string name="average_time"><![CDATA[<font color="red">Tempo médio:</font>]]> %1$f segundos.</string>
+    <string name="shortest_time"><![CDATA[<font color="red">Menor tempo:</font>]]> %1$f segundos.</string>
+    <string name="longest_time"><![CDATA[<font color="red">Maior tempo:</font>]]> %1$f segundos.</string>
+    <string name="total_time"><![CDATA[<font color="red">Tempo total:</font>]]> %1$f segundos.</string>
+    <string name="invalid_value">O valor digitado não é válido.</string>
+
+    <string name="error_io_operation">Desculpe-nos, mas não foi possível realizar a operação.
+    Provavelmente este dispositivo não suporta a %1$s de um arquivo deste tamanho. Tente realizar
+    esta operação utilizando um arquivo de tamanho menor.</string>
+    <string name="reading">escrita</string>
+    <string name="writing">leitura</string>
+    <string name="choose_file_operation">Escolha o tipo de operação:</string>
+    <string name="file_operation_read">Leitura</string>
+    <string name="file_operation_write">Escrita</string>
+    <string name="choose_file_size">Escolha o tamanho do arquivo:</string>
+    <string name="file_1byte">Arquivo de 1 byte</string>
+    <string name="file_8bytes">Arquivo de 8 bytes</string>
+    <string name="file_32bytes">Arquivo de 32 bytes</string>
+    <string name="file_64bytes">Arquivo de 64 bytes</string>
+    <string name="file_1kilobyte">Arquivo de 1 KB</string>
+    <string name="file_4kilobytes">Arquivo de 4 KB</string>
+    <string name="file_8kilobytes">Arquivo de 8 KB</string>
+    <string name="file_32kilobytes">Arquivo de 32 KB</string>
+    <string name="file_64kilobytes">Arquivo de 64 KB</string>
+    <string name="file_1megabyte">Arquivo de 1 MB</string>
+    <string name="file_4megabytes">Arquivo de 4 MB</string>
+    <string name="file_8megabytes">Arquivo de 8 MB</string>
+    <string name="file_32megabytes">Arquivo de 32 MB</string>
+    <string name="file_64megabytes">Arquivo de 64 MB</string>
+
 </resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TccApp</string>
+    <string name="welcome">Welcome! Please select one item for testing.</string>
+    <string name="error">Error</string>
+
+    <string name="multiply_matrixes">Matrixes multiplication</string>
+    <string name="io_test">I/O testing</string>
+    <string name="interface_test">Interface testing</string>
+
+    <string name="calculate">Calculate</string>
+    <string name="matrix_size_hint">Matrix size</string>
+    <string name="service_mean_time"><![CDATA[<font color="red">Service mean time (average time for the
+        execution of each operation):</font>]]> %1$f seconds.
+    </string>
+    <string name="average_time"><![CDATA[<font color="red">Average time:</font>]]> %1$f seconds.</string>
+    <string name="shortest_time"><![CDATA[<font color="red">Lowest time:</font>]]> %1$f seconds.</string>
+    <string name="longest_time"><![CDATA[<font color="red">Longest time:</font>]]> %1$f seconds.</string>
+    <string name="total_time"><![CDATA[<font color="red">Total time:</font>]]> %1$f seconds.</string>
+    <string name="invalid_value">The typed value is invalid.</string>
+
+    <string name="error_io_operation">Sorry, but it was not possible to execute this operation. It is possible that
+    this device does not support %1$s a file that big. Please, retry this operation choosing a
+    smaller file length.</string>
+    <string name="reading">reading</string>
+    <string name="writing">writing</string>
+    <string name="choose_file_operation">Choose the file operation type:</string>
+    <string name="file_operation_read">Read</string>
+    <string name="file_operation_write">Write</string>
+    <string name="choose_file_size">Choose the file size:</string>
+    <string name="file_1byte">1-byte file</string>
+    <string name="file_8bytes">8-byte file</string>
+    <string name="file_32bytes">32-byte file</string>
+    <string name="file_64bytes">64-byte file</string>
+    <string name="file_1kilobyte">1KB file</string>
+    <string name="file_4kilobytes">4KB file</string>
+    <string name="file_8kilobytes">8KB file</string>
+    <string name="file_32kilobytes">32KB file</string>
+    <string name="file_64kilobytes">64KB file</string>
+    <string name="file_1megabyte">1MB file</string>
+    <string name="file_4megabytes">4MB file</string>
+    <string name="file_8megabytes">8MB file</string>
+    <string name="file_32megabytes">32MB file</string>
+    <string name="file_64megabytes">64MB file</string>
+
+</resources>

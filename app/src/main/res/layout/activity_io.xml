@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.bernardo.tccapp.view.IOActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+
+        <TextView
+            android:id="@+id/activity_io_tv_choose_file_operation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_file_size"/>
+
+        <RadioGroup
+            android:id="@+id/activity_io_rg_file_operation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_io_tv_choose_file_operation">
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_operation_read"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_operation_read"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_operation_write"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_operation_write"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/activity_io_tv_choose_file_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_file_size"
+            android:layout_below="@id/activity_io_rg_file_operation"/>
+
+        <RadioGroup
+            android:id="@+id/activity_io_rg_file_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_io_tv_choose_file_size"
+            android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_1_byte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_1byte" />
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_8_bytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_8bytes" />
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_32_bytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_32bytes" />
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_64_bytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_64bytes" />
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_1_kilobyte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_1kilobyte"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_4_kilobytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_4kilobytes"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_8_kilobytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_8kilobytes"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_32_kilobytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_32kilobytes"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_64_kilobytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_64kilobytes"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_1_megabyte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_1megabyte"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_4_megabytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_4megabytes"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_8_megabytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_8megabytes"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_32_megabytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_32megabytes"/>
+            <RadioButton
+                android:id="@+id/activity_io_rb_file_64_megabytes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/file_64megabytes"/>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/activity_io_btn_Calculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/calculate"
+            android:layout_below="@id/activity_io_rg_file_size"/>
+
+        <TextView
+            android:id="@+id/activity_io_tv_service_mean_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_io_btn_Calculate"/>
+
+        <TextView
+            android:id="@+id/activity_io_tv_average_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_io_tv_service_mean_time"/>
+
+        <TextView
+            android:id="@+id/activity_io_tv_shortest_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_io_tv_average_time"/>
+
+        <TextView
+            android:id="@+id/activity_io_tv_longest_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_io_tv_shortest_time"/>
+
+        <TextView
+            android:id="@+id/activity_io_tv_total_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_io_tv_longest_time"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>
