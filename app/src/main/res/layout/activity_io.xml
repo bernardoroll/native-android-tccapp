@@ -18,7 +18,7 @@
             android:id="@+id/activity_io_tv_choose_file_operation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/choose_file_size"/>
+            android:text="@string/choose_file_operation"/>
 
         <RadioGroup
             android:id="@+id/activity_io_rg_file_operation"

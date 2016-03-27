@@ -43,6 +43,12 @@
     <string name="file_32megabytes">Arquivo de 32 MB</string>
     <string name="file_64megabytes">Arquivo de 64 MB</string>
 
-    <string name="choose_image_file_size">Escolha o tamanho da imagem:</string>
+    <string name="choose_image">Escolha a imagem:</string>
+    <string name="choose_image_size">Escolha o tamanho da imagem:</string>
+    <string name="small_image_size">Pequena (640x426)</string>
+    <string name="medium_image_size">Média (1280x853)</string>
+    <string name="large_image_size">Grande (1920x1280)</string>
+    <string name="image_file_size">Tamanho aproximado do arquivo: %1$s</string>
+
 
 </resources>

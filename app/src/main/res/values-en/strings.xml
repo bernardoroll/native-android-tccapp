@@ -22,7 +22,7 @@
 
     <string name="error_io_operation">Sorry, but it was not possible to execute this operation. It is possible that
     this device does not support %1$s a file that big. Please, retry this operation choosing a
-    smaller file length.</string>
+    smaller file.</string>
     <string name="reading">reading</string>
     <string name="writing">writing</string>
     <string name="choose_file_operation">Choose the file operation type:</string>
@@ -44,6 +44,11 @@
     <string name="file_32megabytes">32MB file</string>
     <string name="file_64megabytes">64MB file</string>
 
-    <string name="choose_image_file_size">Choose the image file size:</string>
+    <string name="choose_image">Choose the image:</string>
+    <string name="choose_image_size">Choose the image size:</string>
+    <string name="small_image_size">Small (640x426)</string>
+    <string name="medium_image_size">Medium (1280x853)</string>
+    <string name="large_image_size">Large (1920x1280)</string>
+    <string name="image_file_size">Estimated file size: %1$s</string>
 
 </resources>

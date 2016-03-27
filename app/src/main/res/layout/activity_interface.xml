@@ -24,24 +24,84 @@
                 android:id="@+id/activity_interface_tv_choose_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="string/choose_image_file_size"/>
+                android:text="@string/choose_image"/>
 
             <RadioGroup
-                android:id="@+id/activity_interface_rg_image_file_size"
+                android:id="@+id/activity_interface_rg_images"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <RadioButton
+                    android:id="@+id/activity_interface_rb_image_guitar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ford_thumb"
+                    android:layout_marginBottom="@dimen/thumb_margin" />
+                <RadioButton
+                    android:id="@+id/activity_interface_rb_image_ford"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/guitar_thumb"
+                    android:layout_marginBottom="@dimen/thumb_margin" />
+                <RadioButton
+                    android:id="@+id/activity_interface_rb_image_skyline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/skyline_thumb"
+                    android:layout_marginBottom="@dimen/thumb_margin" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/choose_image_size"/>
+            <RadioGroup
+                android:id="@+id/activity_interface_rg_image_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <RadioButton
-                    android:id="@+id/activity_interface_rb_image_file_"
+                    android:id="@+id/activity_interface_rb_image_size_small"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@string/small_image_size"/>
+                <RadioButton
+                    android:id="@+id/activity_interface_rb_image_size_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medium_image_size"/>
+                <RadioButton
+                    android:id="@+id/activity_interface_rb_image_size_large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/large_image_size"/>
             </RadioGroup>
+
+            <TextView
+                android:id="@+id/activity_interface_tv_file_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/image_file_size"
+                android:visibility="invisible"/>
+
+            <Button
+                android:id="@+id/activity_interface_btn_calculate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/calculate"/>
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/actvity_interface_iv_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/activity_interface_iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
 
 
     </RelativeLayout>

@@ -114,14 +114,14 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
                         if(q > 0){
                             resultMatrix[i][j] += randomMatrixA[i][k] * randomMatrixB[i][j];
                         } else {
-                            Calendar startServiceTime = new GregorianCalendar();
+                            //Calendar startServiceTime = new GregorianCalendar();
                             resultMatrix[i][j] += randomMatrixA[i][k] * randomMatrixB[i][j];
-                            Calendar endServiceTime = new GregorianCalendar();
+                            //Calendar endServiceTime = new GregorianCalendar();
 
-                            long totalServiceMilliseconds = endServiceTime.getTimeInMillis() -
-                                    startServiceTime.getTimeInMillis();
-                            totalServiceTime += totalServiceMilliseconds;
-                            totalOperations++;
+                            //long totalServiceMilliseconds = endServiceTime.getTimeInMillis() -
+                            //        startServiceTime.getTimeInMillis();
+                            //totalServiceTime += totalServiceMilliseconds;
+                            //totalOperations++;
                         }
                     }
                 }
@@ -136,11 +136,14 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
             }
             totalTime += totalMillis;
         }
-        double serviceMeanTime = (totalServiceTime / totalOperations) / 1000;
+        //double serviceMeanTime = (totalServiceTime / totalOperations) / 1000;
         double averageTimeInSeconds = (totalTime / NUMBER_OF_TESTS) / 1000;
         double shortestTimeInSeconds = minTime / 1000;
         double longestTimeInSeconds = maxTime / 1000;
         double totalTimeInSeconds = totalTime / 1000;
+
+
+        double serviceMeanTime = averageTimeInSeconds;
 
         showResults(serviceMeanTime, averageTimeInSeconds, shortestTimeInSeconds,
                 longestTimeInSeconds, totalTimeInSeconds);
@@ -173,28 +176,6 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
         tvLongestTime.setText(Html.fromHtml(String.format(res.getString(R.string.longest_time),
                 longestTimeInSeconds)));
         tvTotalTime.setText(Html.fromHtml(String.format(res.getString(R.string.total_time), totalTimeInSeconds)));
-
-//        tvServiceMeanTime.setText(String.format(res.getString(R.string.service_mean_time, meanServiceTimeInSeconds),
-//                meanServiceTimeInSeconds));
-//        tvAverageTime.setText(String.format(res.getString(R.string.average_time),
-//                averageTimeInSeconds));
-//        tvShortestTime.setText(String.format(res.getString(R.string.shortest_time),
-//                shortestTimeInSeconds));
-//        tvLongestTime.setText(String.format(res.getString(R.string.longest_time),
-//                longestTimeInSeconds));
-//        tvTotalTime.setText(String.format(res.getString(R.string.total_time), totalTimeInSeconds));
-
-
-//        String strServiceTime = String.format("%.10f", (totalServiceTime / totalOperations) / 1000);
-//        tvServiceMeanTime.setText(R.string.service_mean_time + " " + strServiceTime + " segundos");
-//        String strAverageTime = String.format("%.10f", totalTime / NUMBER_OF_TESTS / 1000);
-//        tvAverageTime.setText(R.string.average_time + " " + strAverageTime + " segundos");
-//        String strMinTime = String.format("%.10f", minTime / 1000);
-//        tvShortestTime.setText (R.string.shortest_time + " " + strMinTime + " segundos");
-//        String strMaxTime = String.format("%.10f", maxTime / 1000);
-//        tvLongestTime.setText(R.string.longest_time + " " + strMaxTime + " segundos");
-//        String strTotalTime = String.format("%.10f", totalTime / 1000);
-//        tvTotalTime.setText(R.string.total_time + " " + strTotalTime + " segundos");
     }
 
 }
