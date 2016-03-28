@@ -15,7 +15,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/actvity_interface_ll_options"
+            android:id="@+id/activity_interface_ll_options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -88,12 +88,45 @@
                 android:layout_height="wrap_content"
                 android:text="@string/calculate"/>
 
+            <TextView
+                android:id="@+id/activity_interface_tv_service_mean_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_interface_btn_calculate"/>
+
+            <TextView
+                android:id="@+id/activity_interface_tv_average_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_interface_tv_service_mean_time"/>
+
+            <TextView
+                android:id="@+id/activity_interface_tv_shortest_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_interface_tv_average_time"/>
+
+            <TextView
+                android:id="@+id/activity_interface_tv_longest_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_interface_tv_shortest_time"/>
+
+            <TextView
+                android:id="@+id/activity_interface_tv_total_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_interface_tv_longest_time"/>
+
         </LinearLayout>
 
 
         <LinearLayout
+            android:id="@+id/activity_interface_ll_image_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@id/activity_interface_ll_options"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/activity_interface_iv_image"
@@ -101,8 +134,6 @@
                 android:layout_height="match_parent" />
 
         </LinearLayout>
-
-
 
     </RelativeLayout>
 

@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.bernardo.tccapp.R;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 /**
@@ -39,12 +43,6 @@ public class InterfaceActivity extends AppCompatActivity {
     private String [] mGuitarImageSizes = new String [] {"37 KB", "142 KB", "337 KB"};
     private String [] mSkylineImageSizes = new String [] {"103 KB", "373 KB", "795 KB"};
     private String[][] mImageSizes = new String[][] { mFordImageSizes, mGuitarImageSizes, mSkylineImageSizes};
-
-    private Drawable[] mFordDrawables;
-    private Drawable[] mGuitarDrawables;
-    private Drawable[] mSkylineDrawables;
-    private Drawable[][] mDrawables;
-
 
     //private RadioGroup rgImage, rgImageSize;
     private static RadioGroup rgImage;
@@ -96,56 +94,177 @@ public class InterfaceActivity extends AppCompatActivity {
                 btnCalculateClicked();
             }
         });
-        //fillDrawableArrays();
-    }
-
-    private void fillDrawableArrays () {
-        Resources res = getResources();
-        mFordDrawables = new Drawable[] {
-                res.getDrawable(R.drawable.ford_640, getBaseContext().getTheme()),
-                res.getDrawable(R.drawable.ford_1280, getBaseContext().getTheme()),
-                res.getDrawable(R.drawable.ford_1920, getBaseContext().getTheme())};
-        mGuitarDrawables = new Drawable[] {
-                res.getDrawable(R.drawable.guitar_640, getBaseContext().getTheme()),
-                res.getDrawable(R.drawable.guitar_1280, getBaseContext().getTheme()),
-                res.getDrawable(R.drawable.guitar_1920, getBaseContext().getTheme())};
-        mSkylineDrawables = new Drawable[] {
-                res.getDrawable(R.drawable.skyline_640, getBaseContext().getTheme()),
-                res.getDrawable(R.drawable.skyline_1280, getBaseContext().getTheme()),
-                res.getDrawable(R.drawable.skyline_1920, getBaseContext().getTheme())};
-
-        mDrawables = new Drawable[][] {mFordDrawables, mGuitarDrawables, mSkylineDrawables};
 
     }
 
-    private Drawable getSelectedFile() {
-        Drawable d;
+    private Drawable getSelectedDrawable(int iFile, int iFileSize) {
+        switch (iFile) {
+            case 0: //Ford
+                switch(iFileSize) {
+                    case 0: // 640
+                        return getResources().getDrawable(R.drawable.ford_640, getBaseContext().getTheme());
+                    case 1: // 1280
+                        return getResources().getDrawable(R.drawable.ford_1280, getBaseContext().getTheme());
+                    case 2: // 1920
+                        return getResources().getDrawable(R.drawable.ford_1920, getBaseContext().getTheme());
+                }
+                break;
+            case 1: //Guitar
+                switch(iFileSize) {
+                    case 0: // 640
+                        return getResources().getDrawable(R.drawable.guitar_640, getBaseContext().getTheme());
+                    case 1: // 1280
+                        return getResources().getDrawable(R.drawable.guitar_1280, getBaseContext().getTheme());
+                    case 2: // 1920
+                        return getResources().getDrawable(R.drawable.guitar_1920, getBaseContext().getTheme());
+                }
+                break;
+            case 2: //Skyline
+                switch(iFileSize) {
+                    case 0: // 640
+                        return getResources().getDrawable(R.drawable.skyline_640, getBaseContext().getTheme());
+                    case 1: // 1280
+                        return getResources().getDrawable(R.drawable.skyline_1280, getBaseContext().getTheme());
+                    case 2: // 1920
+                        return getResources().getDrawable(R.drawable.skyline_1920, getBaseContext().getTheme());
+                }
+                break;
+        }
+        return null;
+    }
 
-        return d;
+    private int getSelectedDrawableId(int iFile, int iFileSize) {
+        switch (iFile) {
+            case 0: //Ford
+                switch(iFileSize) {
+                    case 0: // 640
+                        return R.drawable.ford_640;
+                    case 1: // 1280
+                        return R.drawable.ford_1280;
+                    case 2: // 1920
+                        return R.drawable.ford_1920;
+                }
+                break;
+            case 1: //Guitar
+                switch(iFileSize) {
+                    case 0: // 640
+                        return R.drawable.guitar_640;
+                    case 1: // 1280
+                        return R.drawable.guitar_1280;
+                    case 2: // 1920
+                        return R.drawable.guitar_1920;
+                }
+                break;
+            case 2: //Skyline
+                switch(iFileSize) {
+                    case 0: // 640
+                        return R.drawable.skyline_640;
+                    case 1: // 1280
+                        return R.drawable.skyline_1280;
+                    case 2: // 1920
+                        return R.drawable.skyline_1920;
+                }
+                break;
+        }
+        return -1;
     }
 
     private void btnCalculateClicked() {
 
+        View mViewGroupOptions = findViewById(R.id.activity_interface_ll_options);
+        View mViewGroupImageView = findViewById(R.id.activity_interface_ll_image_view);
+
+        mViewGroupOptions.setVisibility(View.GONE);
+        mViewGroupImageView.setVisibility(View.VISIBLE);
+
         int iFile = getFileIndexChecked();
         int iFileSize = getFileSizeIndexChecked();
+        //Drawable d = getSelectedDrawable(iFile, iFileSize);
+        int id = getSelectedDrawableId(iFile, iFileSize);
 
-        if(iFile >= 0 && iFileSize >= 0) {
-            Drawable d = mDrawables[iFile][iFileSize];
+        if(id >= 0) {
+            //RelativeLayout rlOptions = (RelativeLayout)
+            //        findViewById(R.id.activity_interface_rl_options);
+            //rlOptions.setVisibility(View.GONE);
 
+
+
+            double minTime = Double.MAX_VALUE;
+            double maxTime = Double.MIN_VALUE;
+            double totalTime = 0;
             for(int i = 0; i < NUMBER_OF_TESTS; i++) {
-
                 ImageView ivImage =(ImageView) findViewById(R.id.activity_interface_iv_image);
-                ivImage.setImageDrawable(d);
+                //ivImage.setVisibility(View.VISIBLE);
+
+                Calendar startTime = new GregorianCalendar();
+                ivImage.setImageResource(id);
+                //ivImage.setImageDrawable(d);
+                Calendar endTime = new GregorianCalendar();
+                long totalMillis = endTime.getTimeInMillis() - startTime.getTimeInMillis();
+                if (totalMillis < minTime) {
+                    minTime = totalMillis;
+                }
+                if (totalMillis > maxTime) {
+                    maxTime = totalMillis;
+                }
+                totalTime += totalMillis;
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 } catch (InterruptedException iEx) {
                     Log.d(TAG, "btnCalculateClicked() error: " + iEx.getMessage());
                 }
+
+                //ivImage.setVisibility(View.GONE);
+
             }
+
+            //rlOptions.setVisibility(View.VISIBLE);
+
+
+
+            double averageTimeInSeconds = (totalTime / NUMBER_OF_TESTS) / 1000;
+            double shortestTimeInSeconds = minTime / 1000;
+            double longestTimeInSeconds = maxTime / 1000;
+            double totalTimeInSeconds = totalTime / 1000;
+
+            double serviceMeanTime = averageTimeInSeconds;
+
+            showResults(serviceMeanTime, averageTimeInSeconds, shortestTimeInSeconds,
+                    longestTimeInSeconds, totalTimeInSeconds);
+
+            mViewGroupImageView.setVisibility(View.GONE);
+            mViewGroupOptions.setVisibility(View.VISIBLE);
+
         }
+    }
 
+    private void showResults(double serviceMeanTime, double averageTimeInSeconds,
+                             double shortestTimeInSeconds, double longestTimeInSeconds,
+                             double totalTimeInSeconds) {
 
+        Log.d(TAG, ".showResults() called.");
+
+        TextView tvServiceMeanTime = (TextView)
+                findViewById(R.id.activity_interface_tv_service_mean_time);
+        TextView tvAverageTime = (TextView)
+                findViewById(R.id.activity_interface_tv_average_time);
+        TextView tvShortestTime = (TextView)
+                findViewById(R.id.activity_interface_tv_shortest_time);
+        TextView tvLongestTime = (TextView)
+                findViewById(R.id.activity_interface_tv_longest_time);
+        TextView tvTotalTime = (TextView) findViewById(R.id.activity_interface_tv_total_time);
+        Resources res = getResources();
+
+        tvServiceMeanTime.setText(Html.fromHtml(String.format(res.getString(R.string.service_mean_time),
+                serviceMeanTime)));
+        tvAverageTime.setText(Html.fromHtml(String.format(res.getString(R.string.average_time),
+                averageTimeInSeconds)));
+        tvShortestTime.setText(Html.fromHtml(String.format(res.getString(R.string.shortest_time),
+                shortestTimeInSeconds)));
+        tvLongestTime.setText(Html.fromHtml(String.format(res.getString(R.string.longest_time),
+                longestTimeInSeconds)));
+        tvTotalTime.setText(Html.fromHtml(String.format(res.getString(R.string.total_time), totalTimeInSeconds)));
     }
 
     private void rgImageChanged() {
