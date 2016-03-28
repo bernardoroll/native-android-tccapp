@@ -2,6 +2,8 @@ package com.bernardo.tccapp.view;
 
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -169,17 +172,116 @@ public class InterfaceActivity extends AppCompatActivity {
         return -1;
     }
 
+
+    private void setOptionItemsVisibility(int visibility) {
+        if (visibility == View.VISIBLE) {
+            LinearLayout llOptions = (LinearLayout) findViewById(R.id.activity_interface_ll_options);
+            llOptions.setVisibility(View.VISIBLE);
+            TextView tvChooseOptions = (TextView) findViewById(R.id.activity_interface_tv_choose_options);
+            tvChooseOptions.setVisibility(View.VISIBLE);
+            RadioGroup rgImages = (RadioGroup) findViewById(R.id.activity_interface_rg_images);
+            rgImages.setVisibility(View.VISIBLE);
+            RadioButton rbImageFord = (RadioButton) findViewById(R.id.activity_interface_rb_image_ford);
+            rbImageFord.setVisibility(View.VISIBLE);
+            RadioButton rbImageGuitar = (RadioButton) findViewById(R.id.activity_interface_rb_image_guitar);
+            rbImageGuitar.setVisibility(View.VISIBLE);
+            RadioButton rbImageSkyline = (RadioButton) findViewById(R.id.activity_interface_rb_image_skyline);
+            rbImageSkyline.setVisibility(View.VISIBLE);
+            TextView tvChooseImageSize = (TextView) findViewById(R.id.activity_interface_tv_choose_image_size);
+            tvChooseImageSize.setVisibility(View.VISIBLE);
+            RadioGroup rgImageSize = (RadioGroup) findViewById(R.id.activity_interface_rg_image_size);
+            rgImageSize.setVisibility(View.VISIBLE);
+            RadioButton rbImageSmall = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_small);
+            rbImageSmall.setVisibility(View.VISIBLE);
+            RadioButton rbImageMedium = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_medium);
+            rbImageMedium.setVisibility(View.VISIBLE);
+            RadioButton rbImageLarge = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_large);
+            rbImageLarge.setVisibility(View.VISIBLE);
+            TextView tvFileSize = (TextView) findViewById(R.id.activity_interface_tv_file_size);
+            tvFileSize.setVisibility(View.VISIBLE);
+            Button btnCalculate = (Button) findViewById(R.id.activity_interface_btn_calculate);
+            btnCalculate.setVisibility(View.VISIBLE);
+
+            TextView tvServiceMeanTime = (TextView) findViewById(R.id.activity_interface_tv_service_mean_time);
+            tvServiceMeanTime.setVisibility(View.GONE);
+            TextView tvAverageTime = (TextView) findViewById(R.id.activity_interface_tv_average_time);
+            tvAverageTime.setVisibility(View.GONE);
+            TextView tvShortestTime = (TextView) findViewById(R.id.activity_interface_tv_shortest_time);
+            tvShortestTime.setVisibility(View.GONE);
+            TextView tvLongestTime = (TextView) findViewById(R.id.activity_interface_tv_longest_time);
+            tvLongestTime.setVisibility(View.GONE);
+            TextView tvTotalTime = (TextView) findViewById(R.id.activity_interface_tv_total_time);
+            tvTotalTime.setVisibility(View.GONE);
+
+            LinearLayout llImageView = (LinearLayout) findViewById(R.id.activity_interface_ll_image_view);
+            llImageView.setVisibility(View.GONE);
+            ImageView ivImageView = (ImageView) findViewById(R.id.activity_interface_iv_image);
+            ivImageView.setVisibility(View.GONE);
+
+
+        } else if(visibility == View.GONE) {
+            LinearLayout llOptions = (LinearLayout) findViewById(R.id.activity_interface_ll_options);
+            llOptions.setVisibility(View.GONE);
+            TextView tvChooseOptions = (TextView) findViewById(R.id.activity_interface_tv_choose_options);
+            tvChooseOptions.setVisibility(View.GONE);
+            RadioGroup rgImages = (RadioGroup) findViewById(R.id.activity_interface_rg_images);
+            rgImages.setVisibility(View.GONE);
+            RadioButton rbImageFord = (RadioButton) findViewById(R.id.activity_interface_rb_image_ford);
+            rbImageFord.setVisibility(View.GONE);
+            RadioButton rbImageGuitar = (RadioButton) findViewById(R.id.activity_interface_rb_image_guitar);
+            rbImageGuitar.setVisibility(View.GONE);
+            RadioButton rbImageSkyline = (RadioButton) findViewById(R.id.activity_interface_rb_image_skyline);
+            rbImageSkyline.setVisibility(View.GONE);
+            TextView tvChooseImageSize = (TextView) findViewById(R.id.activity_interface_tv_choose_image_size);
+            tvChooseImageSize.setVisibility(View.GONE);
+            RadioGroup rgImageSize = (RadioGroup) findViewById(R.id.activity_interface_rg_image_size);
+            rgImageSize.setVisibility(View.GONE);
+            RadioButton rbImageSmall = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_small);
+            rbImageSmall.setVisibility(View.GONE);
+            RadioButton rbImageMedium = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_medium);
+            rbImageMedium.setVisibility(View.GONE);
+            RadioButton rbImageLarge = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_large);
+            rbImageLarge.setVisibility(View.GONE);
+            TextView tvFileSize = (TextView) findViewById(R.id.activity_interface_tv_file_size);
+            tvFileSize.setVisibility(View.GONE);
+            Button btnCalculate = (Button) findViewById(R.id.activity_interface_btn_calculate);
+            btnCalculate.setVisibility(View.GONE);
+
+            TextView tvServiceMeanTime = (TextView) findViewById(R.id.activity_interface_tv_service_mean_time);
+            tvServiceMeanTime.setVisibility(View.VISIBLE);
+            TextView tvAverageTime = (TextView) findViewById(R.id.activity_interface_tv_average_time);
+            tvAverageTime.setVisibility(View.VISIBLE);
+            TextView tvShortestTime = (TextView) findViewById(R.id.activity_interface_tv_shortest_time);
+            tvShortestTime.setVisibility(View.VISIBLE);
+            TextView tvLongestTime = (TextView) findViewById(R.id.activity_interface_tv_longest_time);
+            tvLongestTime.setVisibility(View.VISIBLE);
+            TextView tvTotalTime = (TextView) findViewById(R.id.activity_interface_tv_total_time);
+            tvTotalTime.setVisibility(View.VISIBLE);
+
+            LinearLayout llImageView = (LinearLayout) findViewById(R.id.activity_interface_ll_image_view);
+            llImageView.setVisibility(View.VISIBLE);
+            ImageView ivImageView = (ImageView) findViewById(R.id.activity_interface_iv_image);
+            ivImageView.setVisibility(View.VISIBLE);
+
+        } else {
+
+        }
+    }
+
+
     private void btnCalculateClicked() {
 
-        View mViewGroupOptions = findViewById(R.id.activity_interface_ll_options);
-        View mViewGroupImageView = findViewById(R.id.activity_interface_ll_image_view);
+//        View viewGroupOptions = findViewById(R.id.activity_interface_ll_options);
+//        View viewGroupImageView = findViewById(R.id.activity_interface_ll_image_view);
+//
+//        viewGroupOptions.setVisibility(View.GONE);
+//        viewGroupImageView.setVisibility(View.VISIBLE);
 
-        mViewGroupOptions.setVisibility(View.GONE);
-        mViewGroupImageView.setVisibility(View.VISIBLE);
+        setOptionItemsVisibility(View.GONE);
 
         int iFile = getFileIndexChecked();
         int iFileSize = getFileSizeIndexChecked();
-        //Drawable d = getSelectedDrawable(iFile, iFileSize);
+        Drawable d = getSelectedDrawable(iFile, iFileSize);
         int id = getSelectedDrawableId(iFile, iFileSize);
 
         if(id >= 0) {
@@ -187,17 +289,46 @@ public class InterfaceActivity extends AppCompatActivity {
             //        findViewById(R.id.activity_interface_rl_options);
             //rlOptions.setVisibility(View.GONE);
 
-
-
             double minTime = Double.MAX_VALUE;
             double maxTime = Double.MIN_VALUE;
             double totalTime = 0;
+
+            //AnimationDrawable anim = new AnimationDrawable();
+
+
             for(int i = 0; i < NUMBER_OF_TESTS; i++) {
+
+                //anim.addFrame(d, 1000);
+
                 ImageView ivImage =(ImageView) findViewById(R.id.activity_interface_iv_image);
                 //ivImage.setVisibility(View.VISIBLE);
 
+                /*Runnable r = new Runnable() {
+                    //count = 0;
+                    public void run(){
+                        int count = 0;
+                        while(count < NUMBER_OF_TESTS){
+                            count++;
+                            ivImage.setImageResource(id);
+                        }
+                        ivImage.postDelayed(this, 250); //set to go off again in 3 seconds.
+                    }
+                };
+                ivImage.postDelayed(r,250); // set first time for 3 seconds
+                r.run();*/
+
+                Bitmap b = decodeSampledBitmapFromResource(getResources(), id, 200, 200);
+
+
+
+
+
+
                 Calendar startTime = new GregorianCalendar();
                 ivImage.setImageResource(id);
+                ivImage.setImageBitmap(b);
+
+
                 //ivImage.setImageDrawable(d);
                 Calendar endTime = new GregorianCalendar();
                 long totalMillis = endTime.getTimeInMillis() - startTime.getTimeInMillis();
@@ -209,13 +340,15 @@ public class InterfaceActivity extends AppCompatActivity {
                 }
                 totalTime += totalMillis;
 
-                try {
+                /*try {
                     Thread.sleep(100);
                 } catch (InterruptedException iEx) {
                     Log.d(TAG, "btnCalculateClicked() error: " + iEx.getMessage());
-                }
+                }*/
 
                 //ivImage.setVisibility(View.GONE);
+
+                ivImage.destroyDrawingCache();
 
             }
 
@@ -233,10 +366,12 @@ public class InterfaceActivity extends AppCompatActivity {
             showResults(serviceMeanTime, averageTimeInSeconds, shortestTimeInSeconds,
                     longestTimeInSeconds, totalTimeInSeconds);
 
-            mViewGroupImageView.setVisibility(View.GONE);
-            mViewGroupOptions.setVisibility(View.VISIBLE);
+            //viewGroupImageView.setVisibility(View.GONE);
+            //viewGroupOptions.setVisibility(View.VISIBLE);
 
         }
+
+        //setOptionItemsVisibility(View.VISIBLE);
     }
 
     private void showResults(double serviceMeanTime, double averageTimeInSeconds,
@@ -316,6 +451,45 @@ public class InterfaceActivity extends AppCompatActivity {
             return rgImageSize.indexOfChild(rbImageSizeChecked);
         }
         return -1;
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth,
+                                            int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
+
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
     }
 
 }
