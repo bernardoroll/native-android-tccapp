@@ -1,6 +1,7 @@
 package com.bernardo.tccapp.view;
 
 
+import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -285,6 +286,8 @@ public class InterfaceActivity extends AppCompatActivity {
         int id = getSelectedDrawableId(iFile, iFileSize);
 
         if(id >= 0) {
+            //ProgressDialog progress = new ProgressDialog(this);
+            //progress.show(this, "Título", "Mensagem",true,false);
             //RelativeLayout rlOptions = (RelativeLayout)
             //        findViewById(R.id.activity_interface_rl_options);
             //rlOptions.setVisibility(View.GONE);
@@ -368,6 +371,7 @@ public class InterfaceActivity extends AppCompatActivity {
 
             //viewGroupImageView.setVisibility(View.GONE);
             //viewGroupOptions.setVisibility(View.VISIBLE);
+            //progress.dismiss();
 
         }
 
