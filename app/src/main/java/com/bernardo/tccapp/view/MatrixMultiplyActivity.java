@@ -1,5 +1,6 @@
 package com.bernardo.tccapp.view;
 
+import android.app.ActivityManager;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -94,7 +95,7 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
 
     }
 
-    private void multiplyMatrixes() {
+    public void multiplyMatrixes() {
 
         Log.d(TAG, ".multiplyMatrixes() called.");
 
@@ -105,6 +106,19 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
 
         double totalServiceTime = 0;
         double totalOperations = 0;
+
+        ActivityManager aManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        android.os.Debug.MemoryInfo [] mi = new android.os.Debug.MemoryInfo[100];
+        for(ActivityManager.RunningAppProcessInfo rAPI : aManager.getRunningAppProcesses()) {
+            if(rAPI.pid == android.os.Process.myPid()) {
+
+
+                int [] pids = new int[]{rAPI.pid};
+
+                 mi = aManager.getProcessMemoryInfo(pids);
+            }
+        }
+
 
         for(int q = 0; q < NUMBER_OF_TESTS; q++) {
             Calendar startTime = new GregorianCalendar();
@@ -136,6 +150,17 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
             }
             totalTime += totalMillis;
         }
+
+        for(ActivityManager.RunningAppProcessInfo rAPI : aManager.getRunningAppProcesses()) {
+            if(rAPI.pid == android.os.Process.myPid()) {
+
+
+                int [] pids = new int[]{rAPI.pid};
+
+                mi = aManager.getProcessMemoryInfo(pids);
+            }
+        }
+
         //double serviceMeanTime = (totalServiceTime / totalOperations) / 1000;
         double averageTimeInSeconds = (totalTime / NUMBER_OF_TESTS) / 1000;
         double shortestTimeInSeconds = minTime / 1000;
