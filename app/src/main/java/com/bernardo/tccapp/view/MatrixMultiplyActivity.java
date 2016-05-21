@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bernardo.tccapp.R;
+import com.bernardo.tccapp.util.Statistics;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -100,6 +101,10 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
         Log.d(TAG, ".multiplyMatrixes() called.");
 
         int[][] resultMatrix = new int[randomMatrixA[0].length][randomMatrixB[1].length];
+
+        long eachExecutionTime[] = new long[NUMBER_OF_TESTS];
+
+
         double minTime = Double.MAX_VALUE;
         double maxTime = Double.MIN_VALUE;
         double totalTime = 0;
@@ -119,6 +124,7 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
             }
         }
 
+        long startTimestamp = System.currentTimeMillis();
 
         for(int q = 0; q < NUMBER_OF_TESTS; q++) {
             Calendar startTime = new GregorianCalendar();
@@ -142,6 +148,7 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
             }
             Calendar endTime = new GregorianCalendar();
             long totalMillis = endTime.getTimeInMillis() - startTime.getTimeInMillis();
+            eachExecutionTime[q] = totalMillis;
             if (totalMillis < minTime) {
                 minTime = totalMillis;
             }
@@ -151,15 +158,18 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
             totalTime += totalMillis;
         }
 
-        for(ActivityManager.RunningAppProcessInfo rAPI : aManager.getRunningAppProcesses()) {
-            if(rAPI.pid == android.os.Process.myPid()) {
+        long endTimestamp = System.currentTimeMillis();
 
-
-                int [] pids = new int[]{rAPI.pid};
-
-                mi = aManager.getProcessMemoryInfo(pids);
-            }
-        }
+        
+//        for(ActivityManager.RunningAppProcessInfo rAPI : aManager.getRunningAppProcesses()) {
+//            if(rAPI.pid == android.os.Process.myPid()) {
+//
+//
+//                int [] pids = new int[]{rAPI.pid};
+//
+//                mi = aManager.getProcessMemoryInfo(pids);
+//            }
+//        }
 
         //double serviceMeanTime = (totalServiceTime / totalOperations) / 1000;
         double averageTimeInSeconds = (totalTime / NUMBER_OF_TESTS) / 1000;

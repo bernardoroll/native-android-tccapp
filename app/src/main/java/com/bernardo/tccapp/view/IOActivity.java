@@ -231,7 +231,11 @@ public class IOActivity extends AppCompatActivity {
         double minTime = Double.MAX_VALUE;
         double maxTime = Double.MIN_VALUE;
         double totalTime = 0;
+
+        long eachExecutionTime[] = new long[NUMBER_OF_TESTS];
         //double totalServiceTime = 0;
+
+        long startTimestamp = System.currentTimeMillis();
 
         for(int i = 0; i < NUMBER_OF_TESTS; i++) {
 
@@ -239,6 +243,8 @@ public class IOActivity extends AppCompatActivity {
             readFile(fileSize);
             Calendar endTime = new GregorianCalendar();
             long totalMillis = endTime.getTimeInMillis() - startTime.getTimeInMillis();
+
+            eachExecutionTime[i] = totalMillis;
 
             if(totalMillis < minTime) {
                 minTime = totalMillis;
@@ -249,6 +255,8 @@ public class IOActivity extends AppCompatActivity {
 
             totalTime += totalMillis;
         }
+
+        long endTimestamp = System.currentTimeMillis();
 
         // Neste caso o tempo médio de serviço é igual ao tempo médio.
         //double serviceMeanTime = (totalServiceTime / totalOperations) / 1000;

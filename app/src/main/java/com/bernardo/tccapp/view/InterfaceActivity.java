@@ -296,8 +296,11 @@ public class InterfaceActivity extends AppCompatActivity {
             double maxTime = Double.MIN_VALUE;
             double totalTime = 0;
 
+            long [] eachExecutionTime = new long[NUMBER_OF_TESTS];
+
             //AnimationDrawable anim = new AnimationDrawable();
 
+            long startTimestamp = System.currentTimeMillis();
 
             for(int i = 0; i < NUMBER_OF_TESTS; i++) {
 
@@ -335,6 +338,9 @@ public class InterfaceActivity extends AppCompatActivity {
                 //ivImage.setImageDrawable(d);
                 Calendar endTime = new GregorianCalendar();
                 long totalMillis = endTime.getTimeInMillis() - startTime.getTimeInMillis();
+
+                eachExecutionTime[i] = totalMillis;
+
                 if (totalMillis < minTime) {
                     minTime = totalMillis;
                 }
@@ -354,6 +360,8 @@ public class InterfaceActivity extends AppCompatActivity {
                 ivImage.destroyDrawingCache();
 
             }
+
+            long endTimestamp = System.currentTimeMillis();
 
             //rlOptions.setVisibility(View.VISIBLE);
 
