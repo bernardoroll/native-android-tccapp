@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.bernardo.tccapp.R;
+import com.bernardo.tccapp.util.Statistics;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -231,11 +232,11 @@ public class IOActivity extends AppCompatActivity {
         double minTime = Double.MAX_VALUE;
         double maxTime = Double.MIN_VALUE;
         double totalTime = 0;
-
+        long startTimestamp, endTimestamp;
         long eachExecutionTime[] = new long[NUMBER_OF_TESTS];
         //double totalServiceTime = 0;
 
-        long startTimestamp = System.currentTimeMillis();
+        startTimestamp = System.currentTimeMillis();
 
         for(int i = 0; i < NUMBER_OF_TESTS; i++) {
 
@@ -256,7 +257,7 @@ public class IOActivity extends AppCompatActivity {
             totalTime += totalMillis;
         }
 
-        long endTimestamp = System.currentTimeMillis();
+        endTimestamp = System.currentTimeMillis();
 
         // Neste caso o tempo médio de serviço é igual ao tempo médio.
         //double serviceMeanTime = (totalServiceTime / totalOperations) / 1000;
@@ -266,7 +267,7 @@ public class IOActivity extends AppCompatActivity {
         double totalTimeInSeconds = totalTime / 1000;
 
         showResults(averageTimeInSeconds, shortestTimeInSeconds, longestTimeInSeconds,
-                totalTimeInSeconds);
+                totalTimeInSeconds, startTimestamp, endTimestamp, eachExecutionTime);
 
     }
 
@@ -280,9 +281,12 @@ public class IOActivity extends AppCompatActivity {
         double minTime = Double.MAX_VALUE;
         double maxTime = Double.MIN_VALUE;
         double totalTime = 0;
+        long startTimestamp, endTimestamp;
+        long [] eachExecutionTime = new long[NUMBER_OF_TESTS];
         //double totalServiceTime = 0;
         //double totalOperations = 0;
 
+        startTimestamp = System.currentTimeMillis();
 
         for(int i = 0; i < NUMBER_OF_TESTS; i++) {
 
@@ -290,6 +294,8 @@ public class IOActivity extends AppCompatActivity {
             writeFile(getTextBySize(fileSize), fileSize);
             Calendar endTime = new GregorianCalendar();
             long totalMillis = endTime.getTimeInMillis() - startTime.getTimeInMillis();
+
+            eachExecutionTime[i] = totalMillis;
 
             if(totalMillis < minTime) {
                 minTime = totalMillis;
@@ -301,6 +307,8 @@ public class IOActivity extends AppCompatActivity {
             totalTime += totalMillis;
         }
 
+        endTimestamp = System.currentTimeMillis();
+
         // Neste caso o tempo médio de serviço é igual ao tempo médio.
         //double serviceMeanTime = (totalServiceTime / totalOperations) / 1000;
         double averageTimeInSeconds = (totalTime / NUMBER_OF_TESTS) / 1000;
@@ -309,7 +317,7 @@ public class IOActivity extends AppCompatActivity {
         double totalTimeInSeconds = totalTime / 1000;
 
         showResults(averageTimeInSeconds, shortestTimeInSeconds, longestTimeInSeconds,
-                totalTimeInSeconds);
+                totalTimeInSeconds, startTimestamp, endTimestamp, eachExecutionTime);
     }
 
     private void readFile(FileSize fSize) {
@@ -528,7 +536,8 @@ public class IOActivity extends AppCompatActivity {
     }
 
     private void showResults(double averageTimeInSeconds, double shortestTimeInSeconds,
-                             double longestTimeInSeconds, double totalTimeInSeconds) {
+                             double longestTimeInSeconds, double totalTimeInSeconds,
+                             long startTimestamp, long endTimestamp, long[] eachExecutionTime) {
         Log.d(TAG, ".showResults() called.");
         TextView tvServiceMeanTime = (TextView) findViewById(R.id.activity_io_tv_service_mean_time);
         TextView tvAverageTime = (TextView) findViewById(R.id.activity_io_tv_average_time);
@@ -536,7 +545,16 @@ public class IOActivity extends AppCompatActivity {
         TextView tvLongestTime = (TextView) findViewById(R.id.activity_io_tv_longest_time);
         TextView tvTotalTime = (TextView) findViewById(R.id.activity_io_tv_total_time);
 
+        TextView tvStartTimestamp = (TextView) findViewById(R.id.activity_io_tv_start_timestamp);
+        TextView tvEndTimestamp = (TextView) findViewById(R.id.activity_io_tv_end_timestamp);
+        TextView tvVariance = (TextView) findViewById(R.id.activity_io_tv_variance);
+        TextView tvStandardDeviation = (TextView)
+                findViewById(R.id.activity_io_tv_standard_deviation);
+
         Resources res = getResources();
+
+        tvStartTimestamp.setText(Html.fromHtml(String.format(res.getString(
+                R.string.initial_timestamp), startTimestamp)));
 
         tvServiceMeanTime.setText(Html.fromHtml(String.format(res.getString(R.string.service_mean_time),
                 averageTimeInSeconds)));
@@ -550,6 +568,14 @@ public class IOActivity extends AppCompatActivity {
                 longestTimeInSeconds)));
         tvTotalTime.setText(Html.fromHtml(String.format(res.getString(R.string.total_time), totalTimeInSeconds)));
 
+        tvEndTimestamp.setText(Html.fromHtml(String.format(res.getString(R.string.final_timestamp),
+                endTimestamp)));
+
+        tvVariance.setText(Html.fromHtml(String.format(res.getString(R.string.variance),
+                Statistics.getVariance(eachExecutionTime))));
+        tvStandardDeviation.setText(Html.fromHtml(String.format(
+                res.getString(R.string.standard_deviation),
+                Statistics.getStandardDeviation(eachExecutionTime))));
 
 
     }

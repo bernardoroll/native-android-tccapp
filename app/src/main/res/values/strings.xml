@@ -17,6 +17,12 @@
     <string name="shortest_time"><![CDATA[<font color="red">Menor tempo:</font>]]> %1$f segundos.</string>
     <string name="longest_time"><![CDATA[<font color="red">Maior tempo:</font>]]> %1$f segundos.</string>
     <string name="total_time"><![CDATA[<font color="red">Tempo total:</font>]]> %1$f segundos.</string>
+
+    <string name="initial_timestamp"><![CDATA[<font color="red">Timestamp inicial:</font>]]> %1$d ms.</string>
+    <string name="final_timestamp"><![CDATA[<font color="red">Timestamp final:</font>]]> %1$d ms.</string>
+    <string name="variance"><![CDATA[<font color="red">Variância:</font>]]> %1$f</string>
+    <string name="standard_deviation"><![CDATA[<font color="red">Desvio padrão:</font>]]> %1$f</string>
+
     <string name="invalid_value">O valor digitado não é válido.</string>
 
     <string name="error_io_operation">Desculpe-nos, mas não foi possível realizar a operação.

@@ -103,7 +103,7 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
         int[][] resultMatrix = new int[randomMatrixA[0].length][randomMatrixB[1].length];
 
         long eachExecutionTime[] = new long[NUMBER_OF_TESTS];
-
+        long startTimestamp, endTimestamp;
 
         double minTime = Double.MAX_VALUE;
         double maxTime = Double.MIN_VALUE;
@@ -124,7 +124,7 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
             }
         }
 
-        long startTimestamp = System.currentTimeMillis();
+        startTimestamp = System.currentTimeMillis();
 
         for(int q = 0; q < NUMBER_OF_TESTS; q++) {
             Calendar startTime = new GregorianCalendar();
@@ -158,9 +158,9 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
             totalTime += totalMillis;
         }
 
-        long endTimestamp = System.currentTimeMillis();
+        endTimestamp = System.currentTimeMillis();
 
-        
+
 //        for(ActivityManager.RunningAppProcessInfo rAPI : aManager.getRunningAppProcesses()) {
 //            if(rAPI.pid == android.os.Process.myPid()) {
 //
@@ -181,13 +181,15 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
         double serviceMeanTime = averageTimeInSeconds;
 
         showResults(serviceMeanTime, averageTimeInSeconds, shortestTimeInSeconds,
-                longestTimeInSeconds, totalTimeInSeconds);
+                longestTimeInSeconds, totalTimeInSeconds, startTimestamp, endTimestamp,
+                eachExecutionTime);
 
     }
 
     private void showResults(double serviceMeanTime, double averageTimeInSeconds,
                              double shortestTimeInSeconds, double longestTimeInSeconds,
-                             double totalTimeInSeconds) {
+                             double totalTimeInSeconds, long startTimestamp, long endTimestamp,
+                             long[] eachExecutionTime) {
 
         Log.d(TAG, ".showResults() called.");
 
@@ -200,7 +202,19 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
         TextView tvLongestTime = (TextView)
                 findViewById(R.id.activity_matrix_multiply_tv_longest_time);
         TextView tvTotalTime = (TextView) findViewById(R.id.activity_matrix_multiply_tv_total_time);
+
+        TextView tvStartTimestamp = (TextView)
+                findViewById(R.id.activity_matrix_multiply_tv_start_timestamp);
+        TextView tvEndTimestamp = (TextView)
+                findViewById(R.id.activity_matrix_multiply_tv_end_timestamp);
+        TextView tvVariance = (TextView) findViewById(R.id.activity_matrix_multiply_tv_variance);
+        TextView tvStandardDeviation = (TextView)
+                findViewById(R.id.activity_matrix_multiply_tv_standard_deviation);
+
         Resources res = getResources();
+
+        tvStartTimestamp.setText(Html.fromHtml(
+                String.format(res.getString(R.string.initial_timestamp), startTimestamp)));
 
         tvServiceMeanTime.setText(Html.fromHtml(String.format(res.getString(R.string.service_mean_time),
                 serviceMeanTime)));
@@ -210,7 +224,17 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
                 shortestTimeInSeconds)));
         tvLongestTime.setText(Html.fromHtml(String.format(res.getString(R.string.longest_time),
                 longestTimeInSeconds)));
-        tvTotalTime.setText(Html.fromHtml(String.format(res.getString(R.string.total_time), totalTimeInSeconds)));
+        tvTotalTime.setText(Html.fromHtml(String.format(res.getString(R.string.total_time),
+                totalTimeInSeconds)));
+
+        tvEndTimestamp.setText(Html.fromHtml(String.format(res.getString(R.string.final_timestamp),
+                endTimestamp)));
+
+        tvVariance.setText(Html.fromHtml(String.format(res.getString(R.string.variance),
+                Statistics.getVariance(eachExecutionTime))));
+        tvStandardDeviation.setText(Html.fromHtml(String.format(
+                res.getString(R.string.standard_deviation),
+                Statistics.getStandardDeviation(eachExecutionTime))));
     }
 
 }

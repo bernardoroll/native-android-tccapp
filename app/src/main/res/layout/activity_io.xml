@@ -131,10 +131,16 @@
             android:layout_below="@id/activity_io_rg_file_size"/>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_io_tv_start_timestamp"
+            android:layout_below="@id/activity_io_btn_Calculate"/>
+
+        <TextView
             android:id="@+id/activity_io_tv_service_mean_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/activity_io_btn_Calculate"/>
+            android:layout_below="@id/activity_io_tv_start_timestamp"/>
 
         <TextView
             android:id="@+id/activity_io_tv_average_time"
@@ -159,6 +165,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/activity_io_tv_longest_time"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_io_tv_end_timestamp"
+            android:layout_below="@id/activity_io_tv_total_time"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_io_tv_variance"
+            android:layout_below="@id/activity_io_tv_end_timestamp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_io_tv_standard_deviation"
+            android:layout_below="@id/activity_io_tv_variance"/>
 
 
     </RelativeLayout>

@@ -18,6 +18,12 @@
     <string name="shortest_time"><![CDATA[<font color="red">Lowest time:</font>]]> %1$f seconds.</string>
     <string name="longest_time"><![CDATA[<font color="red">Longest time:</font>]]> %1$f seconds.</string>
     <string name="total_time"><![CDATA[<font color="red">Total time:</font>]]> %1$f seconds.</string>
+
+    <string name="initial_timestamp"><![CDATA[<font color="red">Initial timestamp:</font>]]> %1$d ms.</string>
+    <string name="final_timestamp"><![CDATA[<font color="red">Final timestamp:</font>]]> %1$d ms.</string>
+    <string name="variance"><![CDATA[<font color="red">Variance:</font>]]> %1$f</string>
+    <string name="standard_deviation"><![CDATA[<font color="red">Standard deviation:</font>]]> %1$f</string>
+
     <string name="invalid_value">The typed value is invalid.</string>
 
     <string name="error_io_operation">Sorry, but it was not possible to execute this operation. It is possible that

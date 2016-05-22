@@ -8,7 +8,7 @@ public final class Statistics {
     private Statistics() { }
 
     /**
-     * Gets the standard deviation of a bunch of values.
+     * Gets the standard deviation of a set of values.
      * @param arr
      * @return
      */
@@ -17,14 +17,14 @@ public final class Statistics {
     }
 
     /**
-     * Gets the variance of a bunch of values.
+     * Gets the variance of a set of values.
      * @param arr
      * @return
      */
     public static double getVariance(long [] arr) {
 
         double avg = getAverage(arr);
-        long sum = 0;
+        double sum = 0;
         for(long value : arr) {
             sum += Math.pow((value - avg), 2);
         }
@@ -32,7 +32,7 @@ public final class Statistics {
     }
 
     /**
-     * Gets the average of a bunch of values.
+     * Gets the average of a set of values.
      * @param arr
      * @return the average
      */

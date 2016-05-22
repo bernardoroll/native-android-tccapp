@@ -24,10 +24,16 @@
         android:text="@string/calculate" />
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_matrix_multiply_tv_start_timestamp"
+        android:layout_below="@id/activity_matrix_multiply_btn_calculate"/>
+
+    <TextView
         android:id="@+id/activity_matrix_multiply_tv_service_mean_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_matrix_multiply_btn_calculate"/>
+        android:layout_below="@id/activity_matrix_multiply_tv_start_timestamp"/>
 
     <TextView
         android:id="@+id/activity_matrix_multiply_tv_average_time"
@@ -52,5 +58,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_matrix_multiply_tv_longest_time"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_matrix_multiply_tv_end_timestamp"
+        android:layout_below="@id/activity_matrix_multiply_tv_total_time"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_matrix_multiply_tv_variance"
+        android:layout_below="@id/activity_matrix_multiply_tv_end_timestamp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_matrix_multiply_tv_standard_deviation"
+        android:layout_below="@id/activity_matrix_multiply_tv_variance"/>
+
 
 </RelativeLayout>

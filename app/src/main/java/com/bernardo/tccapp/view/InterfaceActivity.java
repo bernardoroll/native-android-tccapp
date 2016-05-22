@@ -19,6 +19,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.bernardo.tccapp.R;
+import com.bernardo.tccapp.util.Statistics;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -297,10 +298,11 @@ public class InterfaceActivity extends AppCompatActivity {
             double totalTime = 0;
 
             long [] eachExecutionTime = new long[NUMBER_OF_TESTS];
+            long startTimestamp, endTimestamp;
 
             //AnimationDrawable anim = new AnimationDrawable();
 
-            long startTimestamp = System.currentTimeMillis();
+            startTimestamp = System.currentTimeMillis();
 
             for(int i = 0; i < NUMBER_OF_TESTS; i++) {
 
@@ -361,7 +363,7 @@ public class InterfaceActivity extends AppCompatActivity {
 
             }
 
-            long endTimestamp = System.currentTimeMillis();
+            endTimestamp = System.currentTimeMillis();
 
             //rlOptions.setVisibility(View.VISIBLE);
 
@@ -375,7 +377,8 @@ public class InterfaceActivity extends AppCompatActivity {
             double serviceMeanTime = averageTimeInSeconds;
 
             showResults(serviceMeanTime, averageTimeInSeconds, shortestTimeInSeconds,
-                    longestTimeInSeconds, totalTimeInSeconds);
+                    longestTimeInSeconds, totalTimeInSeconds, startTimestamp, endTimestamp,
+                    eachExecutionTime);
 
             //viewGroupImageView.setVisibility(View.GONE);
             //viewGroupOptions.setVisibility(View.VISIBLE);
@@ -388,7 +391,8 @@ public class InterfaceActivity extends AppCompatActivity {
 
     private void showResults(double serviceMeanTime, double averageTimeInSeconds,
                              double shortestTimeInSeconds, double longestTimeInSeconds,
-                             double totalTimeInSeconds) {
+                             double totalTimeInSeconds, long startTimestamp, long endTimestamp,
+                             long[] eachExecutionTime) {
 
         Log.d(TAG, ".showResults() called.");
 
@@ -401,7 +405,18 @@ public class InterfaceActivity extends AppCompatActivity {
         TextView tvLongestTime = (TextView)
                 findViewById(R.id.activity_interface_tv_longest_time);
         TextView tvTotalTime = (TextView) findViewById(R.id.activity_interface_tv_total_time);
+
+        TextView tvStartTimestamp = (TextView)
+                findViewById(R.id.activity_interface_tv_start_timestamp);
+        TextView tvEndTimestamp = (TextView) findViewById(R.id.activity_interface_tv_end_timestamp);
+        TextView tvVariance = (TextView) findViewById(R.id.activity_interface_tv_variance);
+        TextView tvStandardDeviation = (TextView)
+                findViewById(R.id.activity_interface_tv_standard_deviation);
+
         Resources res = getResources();
+
+        tvStartTimestamp.setText(Html.fromHtml(String.format(res.getString(
+                R.string.initial_timestamp), startTimestamp)));
 
         tvServiceMeanTime.setText(Html.fromHtml(String.format(res.getString(R.string.service_mean_time),
                 serviceMeanTime)));
@@ -412,6 +427,15 @@ public class InterfaceActivity extends AppCompatActivity {
         tvLongestTime.setText(Html.fromHtml(String.format(res.getString(R.string.longest_time),
                 longestTimeInSeconds)));
         tvTotalTime.setText(Html.fromHtml(String.format(res.getString(R.string.total_time), totalTimeInSeconds)));
+
+        tvEndTimestamp.setText(Html.fromHtml(String.format(res.getString(R.string.final_timestamp),
+                endTimestamp)));
+
+        tvVariance.setText(Html.fromHtml(String.format(res.getString(R.string.variance),
+                Statistics.getVariance(eachExecutionTime))));
+        tvStandardDeviation.setText(Html.fromHtml(String.format(
+                res.getString(R.string.standard_deviation),
+                Statistics.getStandardDeviation(eachExecutionTime))));
     }
 
     private void rgImageChanged() {
