@@ -128,27 +128,22 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
         startTimestamp = System.currentTimeMillis();
 
         for(int q = 0; q < NUMBER_OF_TESTS; q++) {
-            Calendar startTime = new GregorianCalendar();
-            for(int i = 0; i < randomMatrixA[0].length; i++){
-                for(int j = 0; j < randomMatrixB[1].length; j++) {
-                    for(int k = 0; k < randomMatrixB[0].length; k++) {
-                        //if(q > 0){
-                            resultMatrix[i][j] += randomMatrixA[i][k] * randomMatrixB[i][j];
-                        //} else {
-                            //Calendar startServiceTime = new GregorianCalendar();
-                            //resultMatrix[i][j] += randomMatrixA[i][k] * randomMatrixB[i][j];
-                            //Calendar endServiceTime = new GregorianCalendar();
-
-                            //long totalServiceMilliseconds = endServiceTime.getTimeInMillis() -
-                            //        startServiceTime.getTimeInMillis();
-                            //totalServiceTime += totalServiceMilliseconds;
-                            //totalOperations++;
-                        //}
+            //Calendar startTime = new GregorianCalendar();
+            //int matrixALineCount = randomMatrixA[0].length;
+            //int matrixBCollumnCount = randomMatrixB[1].length;
+            //int matrixBLineCount = randomMatrixB[0].length;
+            int s = Integer.parseInt(mEtMatrixSize.getText().toString().trim());
+            long startTime = System.currentTimeMillis();
+            for(int i = 0; i < s; i++) {//randomMatrixA[0].length; i++){
+                for(int j = 0; j < s; j++) {//randomMatrixB[1].length; j++) {
+                    for(int k = 0; k < s; k++) {//randomMatrixB[0].length; k++) {
+                        resultMatrix[i][j] += randomMatrixA[i][k] * randomMatrixB[i][j];
                     }
                 }
             }
-            Calendar endTime = new GregorianCalendar();
-            long totalMillis = endTime.getTimeInMillis() - startTime.getTimeInMillis();
+            //Calendar endTime = new GregorianCalendar();
+            long endTime = System.currentTimeMillis();
+            long totalMillis = endTime - startTime;
             eachExecutionTime[q] = totalMillis;
             if (totalMillis < minTime) {
                 minTime = totalMillis;
@@ -160,17 +155,6 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
         }
 
         endTimestamp = System.currentTimeMillis();
-
-
-//        for(ActivityManager.RunningAppProcessInfo rAPI : aManager.getRunningAppProcesses()) {
-//            if(rAPI.pid == android.os.Process.myPid()) {
-//
-//
-//                int [] pids = new int[]{rAPI.pid};
-//
-//                mi = aManager.getProcessMemoryInfo(pids);
-//            }
-//        }
 
         //double serviceMeanTime = (totalServiceTime / totalOperations) / 1000;
         double averageTimeInSeconds = (totalTime / NUMBER_OF_TESTS) / 1000;
