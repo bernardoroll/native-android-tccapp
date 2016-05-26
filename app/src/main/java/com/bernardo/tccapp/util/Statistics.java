@@ -2,6 +2,7 @@ package com.bernardo.tccapp.util;
 
 /**
  * Created by bernardorochasalgueiro on 21/05/16.
+ * A class with some statistics functions.
  */
 public final class Statistics {
 
@@ -9,8 +10,8 @@ public final class Statistics {
 
     /**
      * Gets the standard deviation of a set of values.
-     * @param arr
-     * @return
+     * @param arr array of long
+     * @return the standard deviation
      */
     public static double getStandardDeviation(long[] arr) {
         return Math.sqrt(getVariance(arr));
@@ -18,11 +19,10 @@ public final class Statistics {
 
     /**
      * Gets the variance of a set of values.
-     * @param arr
-     * @return
+     * @param arr array of long
+     * @return the variance
      */
     public static double getVariance(long [] arr) {
-
         double avg = getAverage(arr);
         double sum = 0;
         for(long value : arr) {
@@ -33,7 +33,7 @@ public final class Statistics {
 
     /**
      * Gets the average of a set of values.
-     * @param arr
+     * @param arr array of long
      * @return the average
      */
     public static double getAverage(long[] arr) {

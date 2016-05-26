@@ -31,6 +31,10 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
     private EditText mEtMatrixSize, mEtRangeValue;
     private SeekBar mSbRangeValues;
 
+    /**
+     * Overrides the onCreate({@link Bundle}) method of the super class.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,9 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Initializes the variables and adds the event handlers.
+     */
     private void initialLoad() {
 
         Log.d(TAG, ".initialLoad() called.");
@@ -58,7 +65,7 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
 
     /**
      * Fills the matrixes with random numbers between 0 and 100.
-     * @param size
+     * @param size the size of the square matrixes
      */
     private void fillRandomMatrix(int size) {
 
@@ -78,6 +85,9 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handles the click event of the button that calculates the matrixes multiplication.
+     */
     private void btnCalculateClicked() {
 
         Log.d(TAG, ".btnCalculateClicked() called.");
@@ -96,6 +106,9 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Multiplies the matrixes
+     */
     public void multiplyMatrixes() {
 
         Log.d(TAG, ".multiplyMatrixes() called.");
@@ -112,18 +125,6 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
         double totalServiceTime = 0;
         double totalOperations = 0;
 
-        ActivityManager aManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        android.os.Debug.MemoryInfo [] mi = new android.os.Debug.MemoryInfo[100];
-        for(ActivityManager.RunningAppProcessInfo rAPI : aManager.getRunningAppProcesses()) {
-            if(rAPI.pid == android.os.Process.myPid()) {
-
-
-                int [] pids = new int[]{rAPI.pid};
-
-                 mi = aManager.getProcessMemoryInfo(pids);
-            }
-        }
-
         startTimestamp = System.currentTimeMillis();
 
         for(int q = 0; q < NUMBER_OF_TESTS; q++) {
@@ -131,18 +132,18 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
             for(int i = 0; i < randomMatrixA[0].length; i++){
                 for(int j = 0; j < randomMatrixB[1].length; j++) {
                     for(int k = 0; k < randomMatrixB[0].length; k++) {
-                        if(q > 0){
+                        //if(q > 0){
                             resultMatrix[i][j] += randomMatrixA[i][k] * randomMatrixB[i][j];
-                        } else {
+                        //} else {
                             //Calendar startServiceTime = new GregorianCalendar();
-                            resultMatrix[i][j] += randomMatrixA[i][k] * randomMatrixB[i][j];
+                            //resultMatrix[i][j] += randomMatrixA[i][k] * randomMatrixB[i][j];
                             //Calendar endServiceTime = new GregorianCalendar();
 
                             //long totalServiceMilliseconds = endServiceTime.getTimeInMillis() -
                             //        startServiceTime.getTimeInMillis();
                             //totalServiceTime += totalServiceMilliseconds;
                             //totalOperations++;
-                        }
+                        //}
                     }
                 }
             }
@@ -186,6 +187,17 @@ public class MatrixMultiplyActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Shows the results on screen.
+     * @param serviceMeanTime
+     * @param averageTimeInSeconds
+     * @param shortestTimeInSeconds
+     * @param longestTimeInSeconds
+     * @param totalTimeInSeconds
+     * @param startTimestamp
+     * @param endTimestamp
+     * @param eachExecutionTime
+     */
     private void showResults(double serviceMeanTime, double averageTimeInSeconds,
                              double shortestTimeInSeconds, double longestTimeInSeconds,
                              double totalTimeInSeconds, long startTimestamp, long endTimestamp,

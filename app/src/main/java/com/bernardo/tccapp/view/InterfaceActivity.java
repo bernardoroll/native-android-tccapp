@@ -47,7 +47,8 @@ public class InterfaceActivity extends AppCompatActivity {
     private String [] mFordImageSizes = new String [] {"118 KB", "462 KB", "1.1 MB"};
     private String [] mGuitarImageSizes = new String [] {"37 KB", "142 KB", "337 KB"};
     private String [] mSkylineImageSizes = new String [] {"103 KB", "373 KB", "795 KB"};
-    private String[][] mImageSizes = new String[][] { mFordImageSizes, mGuitarImageSizes, mSkylineImageSizes};
+    private String[][] mImageSizes = new String[][] { mFordImageSizes, mGuitarImageSizes,
+            mSkylineImageSizes};
 
     //private RadioGroup rgImage, rgImageSize;
     private static RadioGroup rgImage;
@@ -55,7 +56,10 @@ public class InterfaceActivity extends AppCompatActivity {
     private static TextView tvFileSize;
     private static Button btnCalculate;
 
-
+    /**
+     * Overrides the onCreate({@link Bundle}) method of the super class.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +82,9 @@ public class InterfaceActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Initializes the variables and adds the event handlers.
+     */
     private void initialLoad() {
         rgImage.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -102,42 +109,63 @@ public class InterfaceActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Gets the selected image.
+     * @param iFile the index of the selected image.
+     * @param iFileSize the index of the selected image size.
+     * @return {@link Drawable} the selected Drawable
+     */
     private Drawable getSelectedDrawable(int iFile, int iFileSize) {
         switch (iFile) {
             case 0: //Ford
                 switch(iFileSize) {
                     case 0: // 640
-                        return getResources().getDrawable(R.drawable.ford_640, getBaseContext().getTheme());
+                        return getResources().getDrawable(R.drawable.ford_640,
+                                getBaseContext().getTheme());
                     case 1: // 1280
-                        return getResources().getDrawable(R.drawable.ford_1280, getBaseContext().getTheme());
+                        return getResources().getDrawable(R.drawable.ford_1280,
+                                getBaseContext().getTheme());
                     case 2: // 1920
-                        return getResources().getDrawable(R.drawable.ford_1920, getBaseContext().getTheme());
+                        return getResources().getDrawable(R.drawable.ford_1920,
+                                getBaseContext().getTheme());
                 }
                 break;
             case 1: //Guitar
                 switch(iFileSize) {
                     case 0: // 640
-                        return getResources().getDrawable(R.drawable.guitar_640, getBaseContext().getTheme());
+                        return getResources().getDrawable(R.drawable.guitar_640,
+                                getBaseContext().getTheme());
                     case 1: // 1280
-                        return getResources().getDrawable(R.drawable.guitar_1280, getBaseContext().getTheme());
+                        return getResources().getDrawable(R.drawable.guitar_1280,
+                                getBaseContext().getTheme());
                     case 2: // 1920
-                        return getResources().getDrawable(R.drawable.guitar_1920, getBaseContext().getTheme());
+                        return getResources().getDrawable(R.drawable.guitar_1920,
+                                getBaseContext().getTheme());
                 }
                 break;
             case 2: //Skyline
                 switch(iFileSize) {
                     case 0: // 640
-                        return getResources().getDrawable(R.drawable.skyline_640, getBaseContext().getTheme());
+                        return getResources().getDrawable(R.drawable.skyline_640,
+                                getBaseContext().getTheme());
                     case 1: // 1280
-                        return getResources().getDrawable(R.drawable.skyline_1280, getBaseContext().getTheme());
+                        return getResources().getDrawable(R.drawable.skyline_1280,
+                                getBaseContext().getTheme());
                     case 2: // 1920
-                        return getResources().getDrawable(R.drawable.skyline_1920, getBaseContext().getTheme());
+                        return getResources().getDrawable(R.drawable.skyline_1920,
+                                getBaseContext().getTheme());
                 }
                 break;
         }
         return null;
     }
 
+    /**
+     * Gets the image resource id.
+     * @param iFile
+     * @param iFileSize
+     * @return
+     */
     private int getSelectedDrawableId(int iFile, int iFileSize) {
         switch (iFile) {
             case 0: //Ford
@@ -177,90 +205,122 @@ public class InterfaceActivity extends AppCompatActivity {
 
     private void setOptionItemsVisibility(int visibility) {
         if (visibility == View.VISIBLE) {
-            LinearLayout llOptions = (LinearLayout) findViewById(R.id.activity_interface_ll_options);
+            LinearLayout llOptions = (LinearLayout)
+                    findViewById(R.id.activity_interface_ll_options);
             llOptions.setVisibility(View.VISIBLE);
-            TextView tvChooseOptions = (TextView) findViewById(R.id.activity_interface_tv_choose_options);
+            TextView tvChooseOptions = (TextView)
+                    findViewById(R.id.activity_interface_tv_choose_options);
             tvChooseOptions.setVisibility(View.VISIBLE);
-            RadioGroup rgImages = (RadioGroup) findViewById(R.id.activity_interface_rg_images);
+            RadioGroup rgImages = (RadioGroup)
+                    findViewById(R.id.activity_interface_rg_images);
             rgImages.setVisibility(View.VISIBLE);
-            RadioButton rbImageFord = (RadioButton) findViewById(R.id.activity_interface_rb_image_ford);
+            RadioButton rbImageFord = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_ford);
             rbImageFord.setVisibility(View.VISIBLE);
-            RadioButton rbImageGuitar = (RadioButton) findViewById(R.id.activity_interface_rb_image_guitar);
+            RadioButton rbImageGuitar = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_guitar);
             rbImageGuitar.setVisibility(View.VISIBLE);
-            RadioButton rbImageSkyline = (RadioButton) findViewById(R.id.activity_interface_rb_image_skyline);
+            RadioButton rbImageSkyline = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_skyline);
             rbImageSkyline.setVisibility(View.VISIBLE);
-            TextView tvChooseImageSize = (TextView) findViewById(R.id.activity_interface_tv_choose_image_size);
+            TextView tvChooseImageSize = (TextView)
+                    findViewById(R.id.activity_interface_tv_choose_image_size);
             tvChooseImageSize.setVisibility(View.VISIBLE);
-            RadioGroup rgImageSize = (RadioGroup) findViewById(R.id.activity_interface_rg_image_size);
+            RadioGroup rgImageSize = (RadioGroup)
+                    findViewById(R.id.activity_interface_rg_image_size);
             rgImageSize.setVisibility(View.VISIBLE);
-            RadioButton rbImageSmall = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_small);
+            RadioButton rbImageSmall = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_size_small);
             rbImageSmall.setVisibility(View.VISIBLE);
-            RadioButton rbImageMedium = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_medium);
+            RadioButton rbImageMedium = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_size_medium);
             rbImageMedium.setVisibility(View.VISIBLE);
-            RadioButton rbImageLarge = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_large);
+            RadioButton rbImageLarge = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_size_large);
             rbImageLarge.setVisibility(View.VISIBLE);
             TextView tvFileSize = (TextView) findViewById(R.id.activity_interface_tv_file_size);
             tvFileSize.setVisibility(View.VISIBLE);
             Button btnCalculate = (Button) findViewById(R.id.activity_interface_btn_calculate);
             btnCalculate.setVisibility(View.VISIBLE);
 
-            TextView tvServiceMeanTime = (TextView) findViewById(R.id.activity_interface_tv_service_mean_time);
+            TextView tvServiceMeanTime = (TextView)
+                    findViewById(R.id.activity_interface_tv_service_mean_time);
             tvServiceMeanTime.setVisibility(View.GONE);
-            TextView tvAverageTime = (TextView) findViewById(R.id.activity_interface_tv_average_time);
+            TextView tvAverageTime = (TextView)
+                    findViewById(R.id.activity_interface_tv_average_time);
             tvAverageTime.setVisibility(View.GONE);
-            TextView tvShortestTime = (TextView) findViewById(R.id.activity_interface_tv_shortest_time);
+            TextView tvShortestTime = (TextView)
+                    findViewById(R.id.activity_interface_tv_shortest_time);
             tvShortestTime.setVisibility(View.GONE);
-            TextView tvLongestTime = (TextView) findViewById(R.id.activity_interface_tv_longest_time);
+            TextView tvLongestTime = (TextView)
+                    findViewById(R.id.activity_interface_tv_longest_time);
             tvLongestTime.setVisibility(View.GONE);
-            TextView tvTotalTime = (TextView) findViewById(R.id.activity_interface_tv_total_time);
+            TextView tvTotalTime = (TextView)
+                    findViewById(R.id.activity_interface_tv_total_time);
             tvTotalTime.setVisibility(View.GONE);
 
-            LinearLayout llImageView = (LinearLayout) findViewById(R.id.activity_interface_ll_image_view);
+            LinearLayout llImageView = (LinearLayout)
+                    findViewById(R.id.activity_interface_ll_image_view);
             llImageView.setVisibility(View.GONE);
             ImageView ivImageView = (ImageView) findViewById(R.id.activity_interface_iv_image);
             ivImageView.setVisibility(View.GONE);
 
 
         } else if(visibility == View.GONE) {
-            LinearLayout llOptions = (LinearLayout) findViewById(R.id.activity_interface_ll_options);
+            LinearLayout llOptions = (LinearLayout)
+                    findViewById(R.id.activity_interface_ll_options);
             llOptions.setVisibility(View.GONE);
-            TextView tvChooseOptions = (TextView) findViewById(R.id.activity_interface_tv_choose_options);
+            TextView tvChooseOptions = (TextView)
+                    findViewById(R.id.activity_interface_tv_choose_options);
             tvChooseOptions.setVisibility(View.GONE);
             RadioGroup rgImages = (RadioGroup) findViewById(R.id.activity_interface_rg_images);
             rgImages.setVisibility(View.GONE);
-            RadioButton rbImageFord = (RadioButton) findViewById(R.id.activity_interface_rb_image_ford);
+            RadioButton rbImageFord = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_ford);
             rbImageFord.setVisibility(View.GONE);
-            RadioButton rbImageGuitar = (RadioButton) findViewById(R.id.activity_interface_rb_image_guitar);
+            RadioButton rbImageGuitar = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_guitar);
             rbImageGuitar.setVisibility(View.GONE);
-            RadioButton rbImageSkyline = (RadioButton) findViewById(R.id.activity_interface_rb_image_skyline);
+            RadioButton rbImageSkyline = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_skyline);
             rbImageSkyline.setVisibility(View.GONE);
-            TextView tvChooseImageSize = (TextView) findViewById(R.id.activity_interface_tv_choose_image_size);
+            TextView tvChooseImageSize = (TextView)
+                    findViewById(R.id.activity_interface_tv_choose_image_size);
             tvChooseImageSize.setVisibility(View.GONE);
-            RadioGroup rgImageSize = (RadioGroup) findViewById(R.id.activity_interface_rg_image_size);
+            RadioGroup rgImageSize = (RadioGroup)
+                    findViewById(R.id.activity_interface_rg_image_size);
             rgImageSize.setVisibility(View.GONE);
-            RadioButton rbImageSmall = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_small);
+            RadioButton rbImageSmall = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_size_small);
             rbImageSmall.setVisibility(View.GONE);
-            RadioButton rbImageMedium = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_medium);
+            RadioButton rbImageMedium = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_size_medium);
             rbImageMedium.setVisibility(View.GONE);
-            RadioButton rbImageLarge = (RadioButton) findViewById(R.id.activity_interface_rb_image_size_large);
+            RadioButton rbImageLarge = (RadioButton)
+                    findViewById(R.id.activity_interface_rb_image_size_large);
             rbImageLarge.setVisibility(View.GONE);
             TextView tvFileSize = (TextView) findViewById(R.id.activity_interface_tv_file_size);
             tvFileSize.setVisibility(View.GONE);
             Button btnCalculate = (Button) findViewById(R.id.activity_interface_btn_calculate);
             btnCalculate.setVisibility(View.GONE);
 
-            TextView tvServiceMeanTime = (TextView) findViewById(R.id.activity_interface_tv_service_mean_time);
+            TextView tvServiceMeanTime = (TextView)
+                    findViewById(R.id.activity_interface_tv_service_mean_time);
             tvServiceMeanTime.setVisibility(View.VISIBLE);
-            TextView tvAverageTime = (TextView) findViewById(R.id.activity_interface_tv_average_time);
+            TextView tvAverageTime = (TextView)
+                    findViewById(R.id.activity_interface_tv_average_time);
             tvAverageTime.setVisibility(View.VISIBLE);
-            TextView tvShortestTime = (TextView) findViewById(R.id.activity_interface_tv_shortest_time);
+            TextView tvShortestTime = (TextView)
+                    findViewById(R.id.activity_interface_tv_shortest_time);
             tvShortestTime.setVisibility(View.VISIBLE);
-            TextView tvLongestTime = (TextView) findViewById(R.id.activity_interface_tv_longest_time);
+            TextView tvLongestTime = (TextView)
+                    findViewById(R.id.activity_interface_tv_longest_time);
             tvLongestTime.setVisibility(View.VISIBLE);
             TextView tvTotalTime = (TextView) findViewById(R.id.activity_interface_tv_total_time);
             tvTotalTime.setVisibility(View.VISIBLE);
 
-            LinearLayout llImageView = (LinearLayout) findViewById(R.id.activity_interface_ll_image_view);
+            LinearLayout llImageView = (LinearLayout)
+                    findViewById(R.id.activity_interface_ll_image_view);
             llImageView.setVisibility(View.VISIBLE);
             ImageView ivImageView = (ImageView) findViewById(R.id.activity_interface_iv_image);
             ivImageView.setVisibility(View.VISIBLE);
@@ -311,7 +371,8 @@ public class InterfaceActivity extends AppCompatActivity {
                 ImageView ivImage =(ImageView) findViewById(R.id.activity_interface_iv_image);
                 //ivImage.setVisibility(View.VISIBLE);
 
-                /*Runnable r = new Runnable() {
+                /*
+                Runnable r = new Runnable() {
                     //count = 0;
                     public void run(){
                         int count = 0;
@@ -323,7 +384,8 @@ public class InterfaceActivity extends AppCompatActivity {
                     }
                 };
                 ivImage.postDelayed(r,250); // set first time for 3 seconds
-                r.run();*/
+                r.run();
+                */
 
                 Bitmap b = decodeSampledBitmapFromResource(getResources(), id, 200, 200);
 
@@ -418,15 +480,16 @@ public class InterfaceActivity extends AppCompatActivity {
         tvStartTimestamp.setText(Html.fromHtml(String.format(res.getString(
                 R.string.initial_timestamp), startTimestamp)));
 
-        tvServiceMeanTime.setText(Html.fromHtml(String.format(res.getString(R.string.service_mean_time),
-                serviceMeanTime)));
+        tvServiceMeanTime.setText(Html.fromHtml(String.format(res.getString(
+                R.string.service_mean_time), serviceMeanTime)));
         tvAverageTime.setText(Html.fromHtml(String.format(res.getString(R.string.average_time),
                 averageTimeInSeconds)));
         tvShortestTime.setText(Html.fromHtml(String.format(res.getString(R.string.shortest_time),
                 shortestTimeInSeconds)));
         tvLongestTime.setText(Html.fromHtml(String.format(res.getString(R.string.longest_time),
                 longestTimeInSeconds)));
-        tvTotalTime.setText(Html.fromHtml(String.format(res.getString(R.string.total_time), totalTimeInSeconds)));
+        tvTotalTime.setText(Html.fromHtml(String.format(res.getString(R.string.total_time),
+                totalTimeInSeconds)));
 
         tvEndTimestamp.setText(Html.fromHtml(String.format(res.getString(R.string.final_timestamp),
                 endTimestamp)));
